@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>snack</title>
+    <link rel="stylesheet" href="snack.js" />
+  </head>
+  <body>
+    <script>
+      fetch("http://localhost:3000/S_PRODUCT/1") //get방식
+        .then((resp) => resp.json())
+        .then((data) => {
+          // console.log(data)
+          data.forEach((ele) => {
+            // console.log(ele); //꼭확인하기 26.02.05
+            const tr = makeRow(ele);
+          });
+        });
+
+      function insertS_PRODUCT() {
+        fetch("http://localhost:3000/S_PRODUCT_insert", {
+          method: "get",
+          headers: { "content-Type": "application/json" },
+          body: JSON.stringify({
+            snack: document.querySelector("#snack").value,
+            chocolate: document.querySelector("#chocolate").value,
+            jelly: document.querySelector("#jelly").value,
+          }),
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            if (data.retCode == "OK") {
+              let tr = makeRow(data);
+            } else {
+              alert("등록중 예외.");
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
+</html>
