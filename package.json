@@ -1,11 +1,12 @@
 {
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "node": "^25.6.0",
+    "nodemon": "^3.1.11",
     "oracledb": "^6.10.0"
   }
 }

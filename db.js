@@ -11,4 +11,4 @@ async function getConnection() {
   });
 }
 
-module.exports = { getConnection, oracledb };
+module.exports = { getConnection: getConnection, oracledb: oracledb };

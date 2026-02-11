@@ -1,10 +1,8 @@
-//내일 수정할 것!!!
-
 const removeS_PRODUCT = (e) => {
   const tr = e.target.parentElement.parentElement;
-  const bno = tr.children[0].innerText;
+  const SPRODUCT_NO = tr.children[0].innerText;
 
-  fetch("http://localhost:3000/S_PRODUCT_delete/" + bno)
+  fetch("http://localhost:3000/S_PRODUCT_delete/" + SPRODUCT_NO)
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data);
@@ -24,7 +22,14 @@ const removeS_PRODUCT = (e) => {
 function makeRow(ele = {}) {
   const tr = document.createElement("tr");
   //보여줄 항목
-  for (let prof of ["PRODUCT_NO", "TITLE", "WRITER"]) {
+  for (let prof of [
+    "SPRODUCT_NO",
+    "SPRODUCT_NAME",
+    "SPRODUCT_PRICE",
+    "KCAL",
+    "EDATE",
+    "RIVIEW",
+  ]) {
     const td = document.createElement("td");
     td.innerHTML = ele[prof];
     tr.appendChild(td);
